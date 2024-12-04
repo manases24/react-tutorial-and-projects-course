@@ -1,3 +1,7 @@
+import img1 from "/assets/images/book-1.jpg";
+import img2 from "/assets/images/book-2.jpg";
+import img3 from "/assets/images/book-3.jpg";
+
 export interface BookType {
   author: string;
   title: string;
@@ -9,19 +13,19 @@ export const books: BookType[] = [
   {
     author: "Jordan Moore",
     title: "Interesting Facts For Curious Minds",
-    img: "./assets/images/book-1.jpg",
+    img: img1,
     id: 1,
   },
   {
     author: "James Clear",
     title: "Atomic Habits",
-    img: "./assets/images/book-2.jpg",
+    img: img2,
     id: 2,
   },
   {
     author: "Stephen King",
     title: "Fairy Tale",
-    img: "./assets/images/book-3.jpg",
+    img: img3,
     id: 3,
   },
 ];
