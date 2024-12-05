@@ -11,6 +11,7 @@ export const MultipleEffects = () => {
   useEffect(() => {
     console.log("hello from second useEffect");
   }, [secondValue]);
+  
   return (
     <div>
       <h1>value : {value}</h1>

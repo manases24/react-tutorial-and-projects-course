@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+
 const url = "https://api.github.com/users";
 
 export const FetchData = () => {
@@ -21,8 +22,7 @@ export const FetchData = () => {
     <section>
       <h3>github users</h3>
       <ul className="users">
-        {users.map((user) => {
-          const { id, login, avatar_url, html_url } = user;
+        {users.map(({ id, login, avatar_url, html_url }) => {
           return (
             <li key={id}>
               <img src={avatar_url} alt={login} />
