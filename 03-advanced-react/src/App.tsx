@@ -1,9 +1,9 @@
-import { UseStateObject } from "./tutorial/01-useState/04-useState-object";
+import { ArticleContainer } from "./tutorial/09-context-api/ArticleContainer";
 
 export function App() {
   return (
     <>
-      <UseStateObject/>
+      <ArticleContainer />
     </>
   );
 }

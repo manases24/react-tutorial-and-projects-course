@@ -1,5 +1,7 @@
+import { v4 as uuidv4 } from "uuid";
+
 export interface DataType {
-  id: number;
+  id: string;
   name: string;
 }
 
@@ -10,24 +12,24 @@ export interface ImageType {
 }
 
 export interface PersonType {
-  id: number;
+  id: string;
   name: string;
   nickName?: string;
   images?: ImageType[];
 }
 
 export const data: DataType[] = [
-  { id: 1, name: "john" },
-  { id: 2, name: "peter" },
-  { id: 3, name: "susan" },
-  { id: 4, name: "anna" },
+  { id: uuidv4(), name: "john" },
+  { id: uuidv4(), name: "peter" },
+  { id: uuidv4(), name: "susan" },
+  { id: uuidv4(), name: "anna" },
 ];
 
 export const people: PersonType[] = [
-  { id: 1, name: "bob", nickName: "Stud Muffin" },
-  { id: 2, name: "peter" },
+  { id: uuidv4(), name: "bob", nickName: "Stud Muffin" },
+  { id: uuidv4(), name: "peter" },
   {
-    id: 3,
+    id: uuidv4(),
     name: "oliver",
     images: [
       {
@@ -37,5 +39,5 @@ export const people: PersonType[] = [
       },
     ],
   },
-  { id: 4, name: "david" },
+  { id: uuidv4(), name: "david" },
 ];
