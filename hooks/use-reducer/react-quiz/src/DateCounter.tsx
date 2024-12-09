@@ -1,32 +1,38 @@
-import { useState } from "react";
+import { useReducer } from "react";
+import { INCREMENT, DECREMENT } from "./reducer/actions";
+import { reducer } from "./reducer/reducer";
 
-export const DateCounter: React.FC = () => {
-  const [count, setCount] = useState<number>(0);
-  const [step, setStep] = useState<number>(1);
+export const DateCounter = () => {
+  // const [count, setCount] = useState<number>(0);
+  // const [step, setStep] = useState<number>(1);
+  const initialState = { count: 0, step: 1 };
 
-  // This mutates the date object.
+  // Inicializa el estado del contador con useReducer
+  // count -> valor
+  // dispatch -> function para actualizar el valor
+  // reducer -> function donde se realizan las acciones
+  const [state, dispatch] = useReducer(reducer, initialState);
+  const { count, step } = state;
+
+  // Calcula la fecha basada en el contador
   const date = new Date("June 21, 2027");
   date.setDate(date.getDate() + count);
 
   const dec = () => {
-    setCount((prevCount) => prevCount - step);
+    dispatch({ type: DECREMENT });
   };
 
   const inc = () => {
-    setCount((prevCount) => prevCount + step);
-  };
-
-  const defineCount = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setCount(Number(e.target.value));
+    dispatch({ type: INCREMENT });
   };
 
   const defineStep = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setStep(Number(e.target.value));
+    e.preventDefault();
+    dispatch({ type: "SET_STEP", payload: Number(e.target.value) });
   };
 
   const reset = () => {
-    setCount(0);
-    setStep(1);
+    dispatch({ type: "RESET", payload: 0 });
   };
 
   return (
@@ -34,7 +40,7 @@ export const DateCounter: React.FC = () => {
       <div>
         <input
           type="range"
-          min="0"
+          min="1"
           max="10"
           value={step}
           onChange={defineStep}
@@ -44,7 +50,7 @@ export const DateCounter: React.FC = () => {
 
       <div>
         <button onClick={dec}>-</button>
-        <input value={count} onChange={defineCount} />
+        <span>{count}</span>
         <button onClick={inc}>+</button>
       </div>
 

@@ -1,9 +1,11 @@
+import { DateCounter } from "./DateCounter";
+
 function App() {
   return (
     <>
-      <h1>Vue</h1>      
+      <DateCounter />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
