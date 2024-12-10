@@ -2,7 +2,6 @@ import { useReducer } from "react";
 import { reducer } from "./02-reducer";
 import { DECREMENT, INCREMENT } from "./02-actions";
 
-
 export const DateCounter = () => {
   // const [count, setCount] = useState<number>(0);
   // const [step, setStep] = useState<number>(1);
@@ -50,15 +49,21 @@ export const DateCounter = () => {
       </div>
 
       <div>
-        <button className="btn" onClick={dec}>-</button>
+        <button className="btn" onClick={dec}>
+          -
+        </button>
         <span>{count}</span>
-        <button className="btn" onClick={inc}>+</button>
+        <button className="btn" onClick={inc}>
+          +
+        </button>
       </div>
 
       <p>{date.toDateString()}</p>
 
       <div>
-        <button className="btn" onClick={reset}>Reset</button>
+        <button className="btn" onClick={reset}>
+          Reset
+        </button>
       </div>
     </div>
   );
