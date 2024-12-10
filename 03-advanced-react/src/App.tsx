@@ -1,9 +1,9 @@
-import { ArticleContainer } from "./tutorial/09-context-api/ArticleContainer";
+import { UseReducer } from "./tutorial/10-useReducer/01-use-reducer";
 
 export function App() {
   return (
     <>
-      <ArticleContainer />
+      <UseReducer />
     </>
   );
 }
