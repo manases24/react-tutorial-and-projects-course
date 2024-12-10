@@ -1,4 +1,4 @@
-import { CLEAR_LIST, REMOVE_ITEM, RESET_LIST } from "./actions";
+import { CLEAR_LIST, REMOVE_ITEM, RESET_LIST } from "./01-actions";
 import { people as data, DataType } from "../../api";
 
 interface State {
@@ -10,6 +10,11 @@ interface Action {
   payload?: { id: string };
 }
 
+// Reducer es una function que actualiza el estado (state)
+// La function reducer toma dos parametros (un state y un action)
+// El state se lo crea como un Objeto
+// El state en React es inmutable, por eso reducer siempre debe devolver un nuevo state en funcion del estado actual y de la accion a realizar
+// Action es simplemente un objeto que describe como debe actualizarse el estado (state)
 export const reducer = (state: State, action: Action) => {
   if (action.type === CLEAR_LIST) {
     return { ...state, people: [] };

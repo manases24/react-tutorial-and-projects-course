@@ -1,13 +1,20 @@
 import { useReducer } from "react";
-import { reducer } from "./reducer";
+import { reducer } from "./01-reducer";
+import { CLEAR_LIST, REMOVE_ITEM, RESET_LIST } from "./01-actions";
 import { people as data } from "../../api";
-import { CLEAR_LIST, REMOVE_ITEM, RESET_LIST } from "./actions";
 
 const initialState = {
   people: data,
 };
 
 export const UseReducer = () => {
+
+  // El hook useReducer tiene: un Objeto action, una function de envio, un reducer y un Objeto state
+  // state -> valor con un state - el state suele ser un Objeto
+  // dispatch -> function para realizar desencadenar acciones cuando escucha un evento
+  // para actualizar el state, enviamos un dispatch al manejador de eventos
+  // reducer -> function donde se realizan las acciones
+  // La actualizacion del state realizara un re-render (nuevo renderizado)
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const clearList = () => {
