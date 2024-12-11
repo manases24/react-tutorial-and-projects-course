@@ -21,7 +21,7 @@ export const Options = ({ question, answer, dispatch }: Props) => {
               : ""
           }`}
           key={option}
-          disabled={answer !== null}
+          disabled={hasAnswer}
           onClick={() => dispatch({ type: "newAnswer", payload: index })}
         >
           {option}
