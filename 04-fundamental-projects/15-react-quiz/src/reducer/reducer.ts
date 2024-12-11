@@ -1,8 +1,8 @@
 import { SECS_PER_QUESTION } from "../context/QuizContext";
-import { Action, QuestionType, State } from "../types";
+import { Action, State } from "../types";
 
 export const initialState: State = {
-  questions: [] as QuestionType[],
+  questions: [],
   status: "loading",
   index: 0,
   answer: null,
