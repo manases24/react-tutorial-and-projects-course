@@ -53,6 +53,11 @@ function App() {
   const numQuestions = state.questions.length;
   const hasAnswer = state.answer !== null; // Verificar si el usuario ya respondió
 
+  const maxPossiblePoints = state.questions.reduce(
+    (total, question) => total + question.points,
+    0
+  );
+
   useEffect(() => {
     fetch("http://localhost:9000/questions")
       .then((res) => res.json())
@@ -76,10 +81,7 @@ function App() {
               numQuestions={numQuestions}
               answer={state.answer}
               points={state.points}
-              maxPossiblePoints={state.questions.reduce(
-                (total, question) => total + question.points,
-                0
-              )}
+              maxPossiblePoints={maxPossiblePoints}
             />
 
             <Question
