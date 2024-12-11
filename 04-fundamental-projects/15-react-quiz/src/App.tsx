@@ -9,6 +9,8 @@ import { Action, State } from "./types";
 import { NextButton } from "./components/NextButton";
 import { FinishScreen } from "./components/FinishScreen";
 import { Progress } from "./components/Progress";
+import { Footer } from "./components/Footer";
+import { Timer } from "./components/Timer";
 
 const initialState: State = {
   questions: [],
@@ -16,6 +18,8 @@ const initialState: State = {
   index: 0,
   answer: null,
   points: 0,
+  highscore: 0,
+  secondsRemaining: 600,
 };
 
 const reducer: React.Reducer<State, Action> = (state, action) => {
@@ -23,6 +27,7 @@ const reducer: React.Reducer<State, Action> = (state, action) => {
     case "start":
       return { ...state, status: "active" };
     case "newAnswer":
+      if (!state.questions.length) return state;
       const question = state.questions[state.index];
       return {
         ...state,
@@ -35,7 +40,18 @@ const reducer: React.Reducer<State, Action> = (state, action) => {
     case "nextQuestion":
       return { ...state, index: state.index + 1, answer: null }; // Limpiar respuesta para la siguiente pregunta
     case "finish":
-      return { ...state, status: "finished" };
+      return {
+        ...state,
+        status: "finished",
+        highscore:
+          state.points > state.highscore ? state.points : state.highscore,
+      };
+    case "tick":
+      return {
+        ...state,
+        secondsRemaining:
+          state.secondsRemaining! > 0 ? state.secondsRemaining! - 1 : 0, // Evitar valores negativos
+      };
     case "dataReceived":
       return { ...state, questions: action.payload, status: "ready" };
     case "dataFailed":
@@ -89,12 +105,20 @@ function App() {
               dispatch={dispatch}
               answer={state.answer}
             />
-            <NextButton
-              index={state.index}
-              numQuestions={numQuestions}
-              dispatch={dispatch}
-              hasAnswer={hasAnswer} // Pasar el estado de si se respondió o no
-            />
+            <Footer>
+              <NextButton
+                index={state.index}
+                numQuestions={numQuestions}
+                dispatch={dispatch}
+                hasAnswer={hasAnswer} // Pasar el estado de si se respondió o no
+              />
+              {state.status === "active" && state.secondsRemaining !== null && (
+                <Timer
+                  secondsRemaining={state.secondsRemaining}
+                  dispatch={dispatch}
+                />
+              )}
+            </Footer>
           </>
         )}
         {state.status === "finished" && (

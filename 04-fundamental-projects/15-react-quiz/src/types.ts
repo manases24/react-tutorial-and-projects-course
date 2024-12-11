@@ -3,6 +3,8 @@ export type QuestionType = {
   options: string[];
   correctOption: number;
   points: number;
+  highscore: number;
+  secondsRemaining: number | null;
 };
 
 export type State = {
@@ -11,6 +13,8 @@ export type State = {
   index: number;
   answer: number | null;
   points: number;
+  highscore: number;
+  secondsRemaining: number | null;
 };
 
 export type Action =
@@ -18,6 +22,7 @@ export type Action =
   | { type: "newAnswer"; payload: number }
   | { type: "nextQuestion" }
   | { type: "finish" }
+  | { type: "tick" }
   | { type: "restart" }
   | { type: "dataReceived"; payload: QuestionType[] }
   | { type: "dataFailed" };
