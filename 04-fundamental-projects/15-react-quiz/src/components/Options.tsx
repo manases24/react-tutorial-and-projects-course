@@ -9,11 +9,12 @@ interface Props {
 
 export const Options = ({ question, answer, dispatch }: Props) => {
   const hasAnswer = answer !== null;
+
   return (
     <div className="options">
       {question.options.map((option, index) => (
         <button
-          className={`btn btn-option ${index === answer ? "answer" : ""} ${
+          className={`btn btn-option ${answer === index ? "answer" : ""} ${
             hasAnswer
               ? index === question.correctOption
                 ? "correct"
