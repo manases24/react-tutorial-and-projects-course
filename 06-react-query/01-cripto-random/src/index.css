@@ -11,6 +11,7 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
 }
 
 a {
@@ -53,6 +54,18 @@ button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
+
+.error-message {
+  color: #d9534f;
+  background-color: #f2dede; 
+  border: 1px solid #ebccd1; 
+  padding: 10px 15px; 
+  border-radius: 5px; 
+  font-weight: bold; 
+  margin-top: 10px; 
+  font-size: 16px; 
+}
+
 
 @media (prefers-color-scheme: light) {
   :root {
