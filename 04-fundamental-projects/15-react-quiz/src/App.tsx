@@ -8,6 +8,7 @@ import { Question } from "./components/Question";
 import { Action, State } from "./types";
 import { NextButton } from "./components/NextButton";
 import { FinishScreen } from "./components/FinishScreen";
+import { Progress } from "./components/Progress";
 
 const initialState: State = {
   questions: [],
@@ -70,6 +71,17 @@ function App() {
         )}
         {state.status === "active" && (
           <>
+            <Progress
+              index={state.index}
+              numQuestions={numQuestions}
+              answer={state.answer}
+              points={state.points}
+              maxPossiblePoints={state.questions.reduce(
+                (total, question) => total + question.points,
+                0
+              )}
+            />
+
             <Question
               question={state.questions[state.index]}
               dispatch={dispatch}
