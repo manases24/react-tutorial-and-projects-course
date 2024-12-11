@@ -10,6 +10,7 @@ export type State = {
   status: "loading" | "ready" | "active" | "error";
   index: number;
   answer: number | null;
+  points: number;
 };
 
 export type Action =
