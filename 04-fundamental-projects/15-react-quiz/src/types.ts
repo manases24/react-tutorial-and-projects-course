@@ -1,4 +1,4 @@
-export type Question = {
+export type QuestionType = {
   question: string;
   options: string[];
   correctOption: number;
@@ -6,12 +6,14 @@ export type Question = {
 };
 
 export type State = {
-  questions: Question[];
+  questions: QuestionType[];
   status: "loading" | "ready" | "active" | "error";
   index: number;
+  answer: number | null;
 };
 
 export type Action =
-  | { type: "start"; payload: Question[] }
-  | { type: "dataReceived"; payload: Question[] }
+  | { type: "start"; payload: QuestionType[] }
+  | { type: "newAnswer"; payload: number }
+  | { type: "dataReceived"; payload: QuestionType[] }
   | { type: "dataFailed" };

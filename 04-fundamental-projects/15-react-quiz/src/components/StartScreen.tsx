@@ -1,5 +1,5 @@
 import { Dispatch } from "react";
-import { Action, Question } from "../types";
+import { Action, QuestionType } from "../types";
 
 interface Props {
   numQuestions: number;
@@ -8,7 +8,7 @@ interface Props {
 
 export const StartScreen = ({ numQuestions, dispatch }: Props) => {
   const startQuiz = () => {
-    const questions: Question[] = [];
+    const questions: QuestionType[] = [];
     dispatch({ type: "start", payload: questions });
   };
 

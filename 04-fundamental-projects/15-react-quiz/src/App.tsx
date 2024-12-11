@@ -11,6 +11,7 @@ const initialState: State = {
   questions: [],
   status: "loading",
   index: 0,
+  answer: null,
 };
 
 const reducer: React.Reducer<State, Action> = (state, action) => {
@@ -19,6 +20,11 @@ const reducer: React.Reducer<State, Action> = (state, action) => {
       return {
         ...state,
         status: "active",
+      };
+    case "newAnswer":
+      return {
+        ...state,
+        answer: action.payload,
       };
     case "dataReceived":
       return {
@@ -57,7 +63,13 @@ function App() {
         {state.status === "ready" && (
           <StartScreen numQuestions={numQuestions} dispatch={dispatch} />
         )}
-        {state.status === "active" && <Question />}
+        {state.status === "active" && (
+          <Question
+            question={state.questions[state.index]}
+            dispatch={dispatch}
+            answer={state.answer}
+          />
+        )}
       </Main>
     </div>
   );
