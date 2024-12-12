@@ -1,5 +1,4 @@
 import { useNavigate } from 'react-router-dom';
-
 import { FiSkipBack } from 'react-icons/fi';
 import { IssueComment } from '../components/IssueComment';
 

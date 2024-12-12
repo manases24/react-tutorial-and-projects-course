@@ -1,4 +1,4 @@
-import { IssueItem } from "./Issuetem";
+import { IssueItem } from './IssueItem';
 
 export const IssueList = () => {
   return (

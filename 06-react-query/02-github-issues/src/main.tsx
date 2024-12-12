@@ -7,10 +7,10 @@ import {
   Navigate,
   RouterProvider,
 } from "react-router-dom";
-import App from "./App.tsx";
-import "./index.css";
 import { ListView } from "./issues/views/ListView.tsx";
 import { IssueView } from "./issues/views/IssueView.tsx";
+import App from "./App.tsx";
+import "./index.css";
 
 export const router = createBrowserRouter([
   {
@@ -37,7 +37,6 @@ const queryClient = new QueryClient();
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <QueryClientProvider client={queryClient}>
-      {/* <App /> */}
       <ReactQueryDevtools />
       <RouterProvider router={router} />
     </QueryClientProvider>
