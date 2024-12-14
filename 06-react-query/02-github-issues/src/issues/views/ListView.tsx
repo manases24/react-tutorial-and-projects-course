@@ -9,9 +9,9 @@ export const ListView = () => {
   const [state, setState] = useState<State>(State.All);
   const [selectedLabels, setselectedLabels] = useState<string[]>([]);
 
-  const { issuesQuery } = useIssues({
+  const { issuesQuery, page, nextPage, prevPage } = useIssues({
     state: state,
-    selectedLabels:selectedLabels
+    selectedLabels: selectedLabels,
   });
   const issues = issuesQuery.data ?? [];
 
@@ -29,16 +29,38 @@ export const ListView = () => {
         {issuesQuery.isLoading ? (
           <LoadingSpinner />
         ) : (
-          <IssueList
-            issues={issues}
-            onStateChange={(s) => setState(s)}
-            state={state}
-          />
+          <>
+            <IssueList
+              issues={issues}
+              onStateChange={(s) => setState(s)}
+              state={state}
+            />
+
+            <div className="flex justify-between items-center">
+           
+              <button
+                className="p-2 bg-blue-500 rounded-md hover:bg-blue-700 translate-x-0"
+                onClick={prevPage}
+              >
+                Anteriores
+              </button>
+              <span>{page}</span>
+              <button
+                className="p-2 bg-blue-500 rounded-md hover:bg-blue-700 translate-x-0"
+                onClick={nextPage}
+              >
+                Siguientes
+              </button>
+            </div>
+          </>
         )}
       </div>
 
       <div className="col-span-1 px-2">
-        <LabelPicker onLabelSelected={onLabelSelected} selectedLabels={selectedLabels}/>
+        <LabelPicker
+          onLabelSelected={onLabelSelected}
+          selectedLabels={selectedLabels}
+        />
       </div>
     </div>
   );

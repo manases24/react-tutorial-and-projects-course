@@ -11,6 +11,7 @@ import { ListView } from "./issues/views/ListView.tsx";
 import { IssueView } from "./issues/views/IssueView.tsx";
 import App from "./App.tsx";
 import "./index.css";
+import { ListViewInfinite } from "./issues/views/ListViewInfinite.tsx";
 
 export const router = createBrowserRouter([
   {
@@ -18,6 +19,7 @@ export const router = createBrowserRouter([
     element: <App />,
     children: [
       { path: "list", element: <ListView /> },
+      { path: 'list-infinite', element: <ListViewInfinite /> },
       { path: "issue/:issueNumber", element: <IssueView /> },
       { path: "*", element: <Navigate to="list" /> },
     ],
