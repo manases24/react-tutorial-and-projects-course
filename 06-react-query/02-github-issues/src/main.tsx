@@ -18,7 +18,7 @@ export const router = createBrowserRouter([
     element: <App />,
     children: [
       { path: "list", element: <ListView /> },
-      { path: "issue/:id", element: <IssueView /> },
+      { path: "issue/:issueNumber", element: <IssueView /> },
       { path: "*", element: <Navigate to="list" /> },
     ],
   },
