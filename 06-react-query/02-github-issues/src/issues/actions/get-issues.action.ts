@@ -1,9 +1,17 @@
 import { githubApi } from "../../api/github.api";
 import { sleep } from "../../helpers/sleep";
-import { GithubIssue } from "../interfaces/issue.interface";
+import { GithubIssue, State } from "../interfaces/issue.interface";
 
-export const getIssues = async (): Promise<GithubIssue[]> => {
+interface Props {
+  state: State;
+}
+
+export const getIssues = async ({ state }: Props): Promise<GithubIssue[]> => {
   await sleep(1500);
-  const { data } = await githubApi.get<GithubIssue[]>("/issues");
+  const params = new URLSearchParams();
+  if (state !== State.All) {
+    params.append("state", state);
+  }
+  const { data } = await githubApi.get<GithubIssue[]>("/issues", { params });
   return data;
 };
