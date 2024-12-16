@@ -1,4 +1,4 @@
-import { ProductList } from ".."
+import { ProductList } from "..";
 
 export const MensPage = () => {
   return (
@@ -6,7 +6,6 @@ export const MensPage = () => {
       <h1 className="text-2xl font-bold">Productos para hombres</h1>
 
       <ProductList />
-
     </div>
-  )
-}
+  );
+};

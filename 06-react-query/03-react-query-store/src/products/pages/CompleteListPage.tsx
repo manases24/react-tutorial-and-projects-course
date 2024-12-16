@@ -1,5 +1,4 @@
-import { ProductList } from ".."
-
+import { ProductList } from "..";
 
 export const CompleteListPage = () => {
   return (
@@ -7,7 +6,6 @@ export const CompleteListPage = () => {
       <h1 className="text-2xl font-bold">Todos los productos</h1>
 
       <ProductList />
-
     </div>
-  )
-}
+  );
+};
