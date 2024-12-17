@@ -18,36 +18,38 @@ export const ProductCard = ({
       to={`/product/${product.id}`}
       onMouseEnter={() => prefetchProduct && prefetchProduct(product.id)}
     >
-      <Card className="relative flex flex-col md:flex-row md:space-x-5 space-y-3 md:space-y-0 rounded-xl shadow-lg p-3 max-w-xs md:max-w-3xl mx-auto border border-white bg-white">
-        <div className="w-full md:w-1/3 bg-white grid place-items-center">
+      <Card className="grid grid-rows-[auto_1fr_auto] p-4 rounded-xl shadow-md hover:shadow-2xl transition-shadow duration-300 bg-white border border-gray-200 max-w-sm mx-auto">
+        {/* Imagen con efecto hover */}
+        <div className="overflow-hidden rounded-lg">
           <Image
             src={product.image}
-            alt="tailwind logo"
+            alt={product.title}
             width={300}
-            height={400}
-            className="rounded-xl p-5 sm:p-0 bg-white"
+            height={300}
+            className="transform hover:scale-110 transition-transform duration-300"
           />
         </div>
-        <div className="w-full md:w-2/3 bg-white flex flex-col space-y-2 p-3">
-          <div className="flex justify-between item-center">
-            <p className="text-gray-500 font-medium hidden md:block">
-              {product.category}
-            </p>
-          </div>
-          <h3 className="font-black text-gray-800 text-xl">{product.title}</h3>
 
-          <p className="md:text-lg text-gray-500 text-base">
+        {/* Contenido */}
+        <div className="flex flex-col space-y-2 mt-4">
+          <p className="text-gray-500 text-sm font-medium uppercase tracking-wide">
+            {product.category}
+          </p>
+          <h3 className="font-bold text-gray-800 text-lg line-clamp-2">
+            {product.title}
+          </h3>
+          <p className="text-gray-600 text-sm leading-snug">
             {fullDescription
               ? product.description
-              : product.description.slice(0, 50) + "..."}
+              : product.description.slice(0, 60) + "..."}
           </p>
+        </div>
 
-          <p className="text-xl font-black text-gray-800">
+        {/* Precio */}
+        <div className="flex justify-between items-center mt-4">
+          <p className="text-xl font-bold text-indigo-600">
             ${product.price}
-            <span className="font-normal text-gray-600 text-base">
-              {" "}
-              +impuesto
-            </span>
+            <span className="text-gray-400 text-sm font-normal"> + impuesto</span>
           </p>
         </div>
       </Card>
