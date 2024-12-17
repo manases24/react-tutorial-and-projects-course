@@ -1,13 +1,7 @@
-import { createBrowserRouter } from "react-router-dom";
-import {
-  CompleteListPage,
-  MensPage,
-  NewProduct,
-  ProductById,
-  StoreLayout,
-  WomensPage,
-} from "../products";
-import { ErrorPage } from "../ErrorPage";
+import { createBrowserRouter } from 'react-router-dom';
+import { CompleteListPage, MensPage, NewProduct, ProductById, StoreLayout, WomensPage } from '../products';
+import { ErrorPage } from '../ErrorPage';
+
 
 export const router = createBrowserRouter([
   {
@@ -17,25 +11,27 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "",
-        element: <CompleteListPage />,
+        element: <CompleteListPage />
       },
       {
         path: "men",
-        element: <MensPage />,
+        element: <MensPage />
       },
       {
         path: "women",
-        element: <WomensPage />,
+        element: <WomensPage />
       },
       {
         path: "new",
-        element: <NewProduct />,
+        element: <NewProduct />
       },
       {
-        path: "product/:id",
-        element: <ProductById />,
-      },
-    ],
+        path: 'product/:id',
+        element: <ProductById />
+      }
+    ]
   },
-  {},
+  {
+    
+  }
 ]);

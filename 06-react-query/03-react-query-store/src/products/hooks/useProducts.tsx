@@ -1,24 +1,21 @@
-import { useQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query"
 import { productActions } from "..";
 
 interface Options {
   filterKey?: string;
 }
 
+
 export const useProducts = ({ filterKey }: Options) => {
-  const {
-    isLoading,
-    isError,
-    error,
-    data: products = [],
-    isFetching,
-  } = useQuery(
-    ["products", { filterKey }],
+  
+  const { isLoading, isError, error, data: products = [], isFetching  } = useQuery(
+    ['products', { filterKey }],
     () => productActions.getProducts({ filterKey }),
     {
-      staleTime: 1000 * 60 * 60,
+      staleTime: 1000 * 60 * 60,   
     }
   );
+
 
   return {
     error,
@@ -26,5 +23,5 @@ export const useProducts = ({ filterKey }: Options) => {
     isFetching,
     isLoading,
     products,
-  };
-};
+  }
+}
