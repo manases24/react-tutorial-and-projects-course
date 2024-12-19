@@ -1,14 +1,14 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
+import React from "react";
+import ReactDOM from "react-dom/client";
 
 import { NextUIProvider } from "@nextui-org/react";
-import { RouterProvider } from 'react-router-dom';
-import { router } from './router/router.tsx';
+import { RouterProvider } from "react-router-dom";
+import { router } from "./router/router.tsx";
 
-import './index.css';
-import { TanStackProvider } from './plugins/TanStackProvider.tsx';
+import "./index.css";
+import { TanStackProvider } from "./plugins/TanStackProvider.tsx";
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
+ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <TanStackProvider>
       <NextUIProvider>
@@ -17,5 +17,5 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         </main>
       </NextUIProvider>
     </TanStackProvider>
-  </React.StrictMode>,
-)
+  </React.StrictMode>
+);

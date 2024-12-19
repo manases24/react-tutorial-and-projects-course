@@ -49,7 +49,10 @@ export const ProductCard = ({
         <div className="flex justify-between items-center mt-4">
           <p className="text-xl font-bold text-indigo-600">
             ${product.price}
-            <span className="text-gray-400 text-sm font-normal"> + impuesto</span>
+            <span className="text-gray-400 text-sm font-normal">
+              {" "}
+              + impuesto
+            </span>
           </p>
         </div>
       </Card>
