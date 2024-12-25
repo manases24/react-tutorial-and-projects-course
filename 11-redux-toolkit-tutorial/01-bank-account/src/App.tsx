@@ -1,8 +1,17 @@
+import { AccountOperations } from "./components/AccountOperations";
+import { BalanceDisplay } from "./components/BalanceDisplay";
+import { CreateCustomer } from "./components/CreateCustomer";
+import { Customer } from "./components/Customer";
+
 function App() {
   return (
-    <>
-      <h1>Hello, World!</h1>
-    </>
+    <div>
+      <h1>🏦 The React-Redux Bank ⚛️</h1>
+      <CreateCustomer />
+      <Customer />
+      <AccountOperations />
+      <BalanceDisplay />
+    </div>
   );
 }
 
