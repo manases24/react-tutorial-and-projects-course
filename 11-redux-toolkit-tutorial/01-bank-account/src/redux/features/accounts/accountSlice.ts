@@ -1,5 +1,3 @@
-import { combineReducers, createStore } from "redux";
-
 // Definir los tipos de las acciones
 interface DepositAction {
   type: "account/deposit";
