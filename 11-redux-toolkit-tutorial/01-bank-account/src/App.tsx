@@ -7,6 +7,7 @@ import { RootState } from "./redux/store";
 
 function App() {
   const customer = useSelector((state: RootState) => state.customer);
+  const account = useSelector((state: RootState) => state.account);
 
   return (
     <div>
@@ -17,7 +18,7 @@ function App() {
         <>
           <Customer />
           <AccountOperations />
-          <BalanceDisplay />
+          <BalanceDisplay balance={account.balance}/>
         </>
       )}
     </div>

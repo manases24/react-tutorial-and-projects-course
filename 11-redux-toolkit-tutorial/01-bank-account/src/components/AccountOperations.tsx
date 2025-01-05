@@ -18,7 +18,11 @@ export const AccountOperations = () => {
   const [currency, setCurrency] = useState<CurrencyType>("USD");
 
   const dispatch: AppDispatch = useDispatch();
-  const {balance, loan: currentLoan, loanPurpose: currentLoanPurpose} = useSelector((store: RootState) => store.account);
+  const {
+    balance,
+    loan: currentLoan,
+    loanPurpose: currentLoanPurpose,
+  } = useSelector((store: RootState) => store.account);
 
   function handleDeposit() {
     console.log(`Deposited ${depositAmount} in ${currency}`);
@@ -44,7 +48,7 @@ export const AccountOperations = () => {
 
   function handlePayLoan() {
     console.log("Paid loan");
-    dispatch(payLoan())
+    dispatch(payLoan());
   }
 
   return (
