@@ -3,10 +3,10 @@ import { useState } from "react";
 type CurrencyType = "USD" | "EUR" | "GBP";
 
 export const AccountOperations = () => {
-  const [depositAmount, setDepositAmount] = useState<number>(0); // Asegurado como número
-  const [withdrawalAmount, setWithdrawalAmount] = useState<number>(0); // Cambiado a número
-  const [loanAmount, setLoanAmount] = useState<number>(0); // Cambiado a número
-  const [loanPurpose, setLoanPurpose] = useState<string>(""); // Mantiene tipo string
+  const [depositAmount, setDepositAmount] = useState<number>(0);
+  const [withdrawalAmount, setWithdrawalAmount] = useState<number>(0);
+  const [loanAmount, setLoanAmount] = useState<number>(0);
+  const [loanPurpose, setLoanPurpose] = useState<string>(""); 
   const [currency, setCurrency] = useState<CurrencyType>("USD");
 
   function handleDeposit() {
