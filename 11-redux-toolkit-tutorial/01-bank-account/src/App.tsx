@@ -3,7 +3,7 @@ import { AccountOperations } from "./components/AccountOperations";
 import { BalanceDisplay } from "./components/BalanceDisplay";
 import { CreateCustomer } from "./components/CreateCustomer";
 import { Customer } from "./components/Customer";
-import { RootState } from "./redux/store";
+import { RootState } from "./redux/store-v2";
 
 function App() {
   const customer = useSelector((state: RootState) => state.customer);

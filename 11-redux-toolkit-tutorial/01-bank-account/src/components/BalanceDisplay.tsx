@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { RootState } from "../redux/store"; // Asegúrate de importar el tipo del estado raíz de tu store
+import { RootState } from "../redux/store-v2"; // Asegúrate de importar el tipo del estado raíz de tu store
 
 // Función para formatear moneda
 function formatCurrency(value: number): string {

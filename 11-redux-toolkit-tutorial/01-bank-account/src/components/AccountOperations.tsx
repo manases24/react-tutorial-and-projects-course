@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../redux/store";
 import {
+  convertCurrency,
   deposit,
   payLoan,
   requestLoan,
@@ -20,15 +21,25 @@ export const AccountOperations = () => {
     balance,
     loan: currentLoan,
     loanPurpose: currentLoanPurpose,
-    isLoading
+    isLoading,
   } = useSelector((store: RootState) => store.account);
 
   function handleDeposit() {
     console.log(`Deposited ${depositAmount} in ${currency}`);
-    if (!depositAmount || isNaN(+depositAmount)) return;
-    dispatch(deposit(+depositAmount, currency));
+
+    // Validar que depositAmount es un número
+    const amount = +depositAmount;
+    if (!depositAmount || isNaN(amount)) return; // Evitar que se pase un valor no numérico
+
+    // Si no es USD, se realiza la conversión
+    if (currency !== "USD") {
+      dispatch(convertCurrency({ amount, currency }));
+    } else {
+      dispatch(deposit({ amount, currency })); // Si es USD, directamente se deposita
+    }
+
     setDepositAmount("");
-    setCurrency("");
+    setCurrency("USD");
   }
 
   function handleWithdrawal() {
@@ -40,8 +51,8 @@ export const AccountOperations = () => {
 
   function handleRequestLoan() {
     console.log(`Requested loan of ${loanAmount} for ${loanPurpose}`);
-    if (!loanAmount || !loanPurpose) return;
-    dispatch(requestLoan(+loanAmount, loanPurpose));
+    if (!loanAmount || !loanPurpose) return; // Validar que ambos campos estén completos
+    dispatch(requestLoan({ amount: +loanAmount, purpose: loanPurpose }));
     setLoanAmount("");
     setLoanPurpose("");
   }

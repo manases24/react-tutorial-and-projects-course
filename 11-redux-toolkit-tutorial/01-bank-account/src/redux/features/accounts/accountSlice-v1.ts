@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
-import { RootState } from "../../store";
+import { RootState } from "../../store-v2";
 
 // Estado inicial de la cuenta
 interface State {
@@ -46,15 +46,9 @@ const accountSlice = createSlice({
   name: "account",
   initialState,
   reducers: {
-    // Reducer de la cuenta
-    deposit(
-      state,
-      action: PayloadAction<{ amount: number; currency: string }>
-    ) {
-      const { amount, currency } = action.payload;
-      state.balance += amount;
+    deposit(state, action: PayloadAction<number>) {
+      state.balance += action.payload;
     },
-
     withdraw(state, action: PayloadAction<number>) {
       if (state.balance < action.payload) {
         console.error("Insufficient funds for withdrawal.");

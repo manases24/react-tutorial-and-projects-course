@@ -1,61 +1,42 @@
-import { createStore, combineReducers } from "redux";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-// Definir los tipos de las acciones del cliente
-interface CreateCustomerAction {
-  type: "customer/createCustomer";
-  payload: {
-    fullName: string;
-    nationalID: string;
-    createdAt: string;
-  };
-}
-
-interface UpdateNameAction {
-  type: "customer/updateName";
-  payload: string;
-}
-
-type CustomerAction = CreateCustomerAction | UpdateNameAction;
-
-// Estado inicial del cliente
+// Definir el tipo de los datos del cliente
 interface StateCustomer {
   fullName: string;
   nationalID: string;
   createdAt: string;
 }
 
+// Estado inicial del cliente
 const initialStateCustomer: StateCustomer = {
   fullName: "",
   nationalID: "",
   createdAt: "",
 };
 
-// Reducer para el cliente
-export const customerReducer = (
-  state = initialStateCustomer,
-  action: CustomerAction
-) => {
-  switch (action.type) {
-    case "customer/createCustomer":
-      return {
-        ...state,
-        fullName: action.payload.fullName,
-        nationalID: action.payload.nationalID,
-        createdAt: action.payload.createdAt,
-      };
-    case "customer/updateName":
-      return { ...state, fullName: action.payload };
-    default:
-      return state;
-  }
-};
+// Crear el slice para el cliente
+const customerSlice = createSlice({
+  name: "customer",
+  initialState: initialStateCustomer,
+  reducers: {
+    createCustomer: (
+      state,
+      action: PayloadAction<{ fullName: string; nationalID: string }>
+    ) => {
+      state.fullName = action.payload.fullName;
+      state.nationalID = action.payload.nationalID;
+      state.createdAt = new Date().toISOString();
+    },
+    updateName: (state, action: PayloadAction<string>) => {
+      state.fullName = action.payload;
+    },
+  },
+});
 
-export function createCustomer(
-  fullName: string,
-  nationalID: string
-): CreateCustomerAction {
-  return {
-    type: "customer/createCustomer",
-    payload: { fullName, nationalID, createdAt: new Date().toISOString() },
-  };
-}
+// Exportar las acciones
+export const { createCustomer, updateName } = customerSlice.actions;
+
+export const customerReducer = customerSlice.reducer;
+
+// Exportar el reducer para configurarlo en el store
+export default customerSlice.reducer;
