@@ -1,3 +1,6 @@
+import { ThunkAction } from "redux-thunk";
+import { RootState } from "../../store";
+
 // Definir los tipos de las acciones
 interface DepositAction {
   type: "account/deposit";
@@ -17,6 +20,12 @@ interface RequestLoanAction {
 interface PayLoanAction {
   type: "account/payLoan";
 }
+
+interface ConvertingCurrencyAction {
+  type: "account/convertingCurrency";
+}
+
+type AccountAction = DepositAction | ConvertingCurrencyAction;
 
 type Action =
   | DepositAction
@@ -85,8 +94,30 @@ export const accountReducer = (
 };
 
 // Funciones de acción
-export function deposit(amount: number): DepositAction {
-  return { type: "account/deposit", payload: amount };
+export function deposit(
+  amount: number,
+  currency: string
+): ThunkAction<void, RootState, unknown, AccountAction> {
+  // Si la moneda es USD, no se requiere conversión
+  if (currency === "USD") {
+    return (dispatch) => {
+      dispatch({ type: "account/deposit", payload: amount });
+    };
+  }
+
+  return async function (dispatch) {
+    dispatch({ type: "account/convertingCurrency" });
+    try {
+      const res = await fetch(
+        `https://api.frankfurter.app/latest?amount=${amount}&from=${currency}&to=USD`
+      );
+      const data = await res.json();
+      const converted = data.rates.USD;
+      dispatch({ type: "account/deposit", payload: converted });
+    } catch (error) {
+      console.log(error);
+    }
+  };
 }
 
 export function withdraw(amount: number): WithdrawAction {

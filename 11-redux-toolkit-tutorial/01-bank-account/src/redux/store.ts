@@ -1,4 +1,5 @@
-import { combineReducers, createStore } from "redux";
+import { applyMiddleware, combineReducers, createStore } from "redux";
+import { thunk } from "redux-thunk";
 import { accountReducer } from "./features/accounts/accountSlice";
 import { customerReducer } from "./features/customers/customerSlice";
 
@@ -13,4 +14,4 @@ export default rootReducer;
 export type AppDispatch = typeof store.dispatch;
 
 // Crear el store con el rootReducer combinado
-export const store = createStore(rootReducer);
+export const store = createStore(rootReducer, applyMiddleware(thunk));

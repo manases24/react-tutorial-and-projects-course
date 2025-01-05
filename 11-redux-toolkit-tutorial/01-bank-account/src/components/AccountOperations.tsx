@@ -8,14 +8,12 @@ import {
   withdraw,
 } from "../redux/features/accounts/accountSlice";
 
-type CurrencyType = "USD" | "EUR" | "GBP";
-
 export const AccountOperations = () => {
   const [depositAmount, setDepositAmount] = useState("");
   const [withdrawalAmount, setWithdrawalAmount] = useState("");
   const [loanAmount, setLoanAmount] = useState("");
   const [loanPurpose, setLoanPurpose] = useState("");
-  const [currency, setCurrency] = useState<CurrencyType>("USD");
+  const [currency, setCurrency] = useState("USD");
 
   const dispatch: AppDispatch = useDispatch();
   const {
@@ -27,8 +25,9 @@ export const AccountOperations = () => {
   function handleDeposit() {
     console.log(`Deposited ${depositAmount} in ${currency}`);
     if (!depositAmount || isNaN(+depositAmount)) return;
-    dispatch(deposit(+depositAmount));
+    dispatch(deposit(+depositAmount, currency));
     setDepositAmount("");
+    setCurrency("");
   }
 
   function handleWithdrawal() {
@@ -64,7 +63,7 @@ export const AccountOperations = () => {
           />
           <select
             value={currency}
-            onChange={(e) => setCurrency(e.target.value as CurrencyType)}
+            onChange={(e) => setCurrency(e.target.value)}
           >
             <option value="USD">US Dollar</option>
             <option value="EUR">Euro</option>
@@ -107,7 +106,7 @@ export const AccountOperations = () => {
             <span>
               Pay back ${currentLoan} ({currentLoanPurpose})
             </span>
-            <button onClick={handlePayLoan}> Pay loan</button>
+            <button onClick={handlePayLoan}>Pay loan</button>
           </div>
         )}
       </div>
