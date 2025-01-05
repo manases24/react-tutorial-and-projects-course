@@ -23,39 +23,42 @@ interface PayLoanAction {
 
 interface ConvertingCurrencyAction {
   type: "account/convertingCurrency";
+  payload: boolean; // La acción ahora incluye un payload que indica si está cargando
 }
 
-type AccountAction = DepositAction | ConvertingCurrencyAction;
-
-type Action =
+type AccountAction =
   | DepositAction
   | WithdrawAction
   | RequestLoanAction
-  | PayLoanAction;
+  | PayLoanAction
+  | ConvertingCurrencyAction; // Aquí incluimos todas las acciones
 
 // Estado inicial de la cuenta
 interface State {
   balance: number;
   loan: number;
   loanPurpose: string;
+  isLoading: boolean;
 }
 
 export const initialStateAccount: State = {
   balance: 0,
   loan: 0,
   loanPurpose: "",
+  isLoading: false,
 };
 
 // Reducer para la cuenta
 export const accountReducer = (
   state: State = initialStateAccount,
-  action: Action
+  action: AccountAction
 ): State => {
   switch (action.type) {
     case "account/deposit":
       return {
         ...state,
         balance: state.balance + action.payload,
+        isLoading: false,
       };
     case "account/withdraw":
       if (state.balance < action.payload) {
@@ -88,6 +91,8 @@ export const accountReducer = (
         loanPurpose: "",
         balance: state.balance - state.loan,
       };
+    case "account/convertingCurrency":
+      return { ...state, isLoading: action.payload }; // Aquí el payload indica si está cargando
     default:
       return state;
   }
@@ -106,7 +111,7 @@ export function deposit(
   }
 
   return async function (dispatch) {
-    dispatch({ type: "account/convertingCurrency" });
+    dispatch({ type: "account/convertingCurrency", payload: true }); // Empieza la conversión
     try {
       const res = await fetch(
         `https://api.frankfurter.app/latest?amount=${amount}&from=${currency}&to=USD`
@@ -115,7 +120,9 @@ export function deposit(
       const converted = data.rates.USD;
       dispatch({ type: "account/deposit", payload: converted });
     } catch (error) {
-      console.log(error);
+      console.error(error);
+    } finally {
+      dispatch({ type: "account/convertingCurrency", payload: false }); // Termina la conversión
     }
   };
 }
