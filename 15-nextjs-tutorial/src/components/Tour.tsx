@@ -32,7 +32,7 @@ export const Tour = ({ id, image, info, name, price }: Props) => {
         <p className="text-gray-600 leading-relaxed mb-5">
           {readMore ? info : `${info.substring(0, 200)}...`}
           <button
-            className="bg-blue-500 py-2 px-4 rounded-lg text-white font-semibold capitalize transition-colors hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+            className="bg-blue-500 py-2 px-4 rounded-lg text-white font-semibold capitalize transition-colors hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 ml-2"
             onClick={() => setReadMore(!readMore)}
           >
             {readMore ? "show less" : "read more"}
