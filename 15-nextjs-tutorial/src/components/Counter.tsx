@@ -6,6 +6,7 @@ interface Props {
   value: number;
 }
 
+// Client Component
 export const Counter = ({ value }: Props) => {
   const [counter, setCounter] = useState(value);
   return (
