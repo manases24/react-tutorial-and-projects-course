@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 // Este es el Home principal de nuestra app
 export default function HomePage() {
   return (
