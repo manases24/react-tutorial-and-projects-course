@@ -33,6 +33,7 @@ export default async function TourDetailPage({ params }: Props) {
     <div>
       <h1 className="text-4xl">ID : {id}</h1>
       <section className="flex gap-x-4 mt-4">
+        {/* LOCAL IMAGE */}
         <div>
           <Image
             src={mapsImg}
@@ -43,6 +44,8 @@ export default async function TourDetailPage({ params }: Props) {
           />
           <h2>local image</h2>
         </div>
+
+        {/* REMOTE IMAGE */}
         <div>
           <Image
             src={tour?.image ?? ""}
