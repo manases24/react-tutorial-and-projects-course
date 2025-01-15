@@ -1,10 +1,10 @@
-import { BackHome } from "@/components";
+import { Form, UserList } from "@/components";
 
-export default function AboutPage() {
+export default function ActionPage() {
   return (
     <div>
-      <h1 className="text-7xl">Action Page</h1>
-       <BackHome/>
+      <Form />
+      <UserList />
     </div>
   );
 }
