@@ -1,26 +1,46 @@
-"use client"
+"use client";
 
+import { useFormState, useFormStatus } from "react-dom";
 import { createUser } from "@/utils/actions";
 
-export const Form = () => {
+const SubmitButton = () => {
+  const { pending } = useFormStatus();
   return (
-    <form className="max-w-lg flex flex-col gap-y-4  shadow rounded p-8" action={createUser}>
+    <button
+      className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded capitalize"
+      type="submit"
+      disabled={pending}
+    >
+      {pending ? "submitting..." : "submit"}
+    </button>
+  );
+};
+
+export const Form = () => {
+  const [message, formAction] = useFormState(createUser, null);
+
+  return (
+    <form
+      action={formAction}
+      className="max-w-lg flex flex-col gap-y-4  shadow rounded p-8"
+    >
+      {message && <p>{message}</p>}
       <h2 className="text-2xl capitalize mb-4">create user</h2>
       <input
-        className="w-full max-w-md p-2 border border-blue-500 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
         type="text"
         name="firstName"
-        defaultValue="jonas"
+        defaultValue="peter"
+        required
+        className="border shadow rounded py-2 px-3 text-gray-700"
       />
       <input
-        className="w-full max-w-md p-2 border border-blue-500 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
         type="text"
         name="lastName"
-        defaultValue="schmedtmann"
+        defaultValue="smith"
+        required
+        className="border shadow rounded py-2 px-3 text-gray-700"
       />
-      <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded capitalize">
-        submit
-      </button>
+      <SubmitButton />
     </form>
   );
 };
