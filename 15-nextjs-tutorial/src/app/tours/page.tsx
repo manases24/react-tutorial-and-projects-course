@@ -27,12 +27,12 @@ export default async function ToursPage() {
 
   return (
     <section>
-      <div className="text-center">
-        <h2 className="text-3xl font-semibold">our tours</h2>
+      <div className="text-center text-3xl mb-4">
+        <h1>Tours</h1>
         <BackHome />
       </div>
 
-      <div className="py-8 grid grid-rows-1 gap-8">
+      <div className="grid md:grid-cols-2 gap-8">
         {data.map((tour) => {
           return <Tour key={tour.id} {...tour} />;
         })}

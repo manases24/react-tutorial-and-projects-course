@@ -17,15 +17,18 @@ export const Tour = ({ id, image, info, name, price }: Props) => {
 
   return (
     <article className="bg-white rounded-lg shadow-md transition-shadow hover:shadow-lg relative">
-      <Image
-        className="h-80 w-full object-cover rounded-t-lg"
-        src={image}
-        alt={name}
-        width={500}
-        height={500}
-      />
+      <div className="relative h-48 mb-2">
+        <Image
+          src={image}
+          alt={name}
+          fill
+          sizes="(max-width:768px) 100vw,(max-width:1200px) 50vw,33vw"
+          priority
+          className="object-cover rounded"
+        />
+      </div>
 
-      <span className="absolute top-0 right-0 bg-primary-500 text-white py-2 px-4 text-xs uppercase tracking-widest rounded-tr-lg">
+      <span className="absolute top-0 right-0 bg-primary-500 text-white font-bold py-2 px-4 text-xs uppercase tracking-widest rounded-tr-lg">
         ${price}
       </span>
 
