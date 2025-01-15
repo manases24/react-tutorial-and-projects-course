@@ -37,7 +37,7 @@ export const fetchUsers = async (): Promise<User[]> => {
   return users;
 };
 
-const saveUser = async (user: User) => {
+export const saveUser = async (user: User) => {
   const users = await fetchUsers();
   users.push(user);
   await writeFile("users.json", JSON.stringify(users));
