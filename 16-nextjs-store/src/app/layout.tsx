@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { Container, Navbar } from "@/components";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -13,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Next Storefront',
-  description: 'A nifty store built with Next.js',
+  title: "Next Storefront",
+  description: "A nifty store built with Next.js",
 };
 
 export default function RootLayout({
@@ -27,7 +28,8 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <Navbar />
+        <Container className="py-20">{children}</Container>
       </body>
     </html>
   );
