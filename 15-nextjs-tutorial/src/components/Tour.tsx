@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
 
 interface Props {
   id: string;
@@ -12,12 +14,15 @@ interface Props {
 
 export const Tour = ({ id, image, info, name, price }: Props) => {
   const [readMore, setReadMore] = useState(false);
+
   return (
     <article className="bg-white rounded-lg shadow-md transition-shadow hover:shadow-lg relative">
-      <img
+      <Image
+        className="h-80 w-full object-cover rounded-t-lg"
         src={image}
         alt={name}
-        className="h-80 w-full object-cover rounded-t-lg"
+        width={500}
+        height={500}
       />
 
       <span className="absolute top-0 right-0 bg-primary-500 text-white py-2 px-4 text-xs uppercase tracking-widest rounded-tr-lg">
@@ -25,9 +30,11 @@ export const Tour = ({ id, image, info, name, price }: Props) => {
       </span>
 
       <div className="p-6">
-        <h5 className="text-center mb-4 font-medium text-lg leading-tight">
-          {name}
-        </h5>
+        <Link className="hover:text-blue-500" href={`/tours/${id}`}>
+          <h5 className="text-center mb-4 font-medium text-lg leading-tight">
+            {name}
+          </h5>
+        </Link>
 
         <p className="text-gray-600 leading-relaxed mb-5">
           {readMore ? info : `${info.substring(0, 200)}...`}

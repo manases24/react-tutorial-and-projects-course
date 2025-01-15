@@ -11,10 +11,19 @@ interface Tour {
 
 const url = "https://www.course-api.com/react-tours-project";
 
+// const fetchTours = async () => {
+//   await new Promise((resolve) => setTimeout(resolve, 3000));
+//   const response = await fetch(url);
+//   const data: Tour[] = await response.json();
+//   return data;
+// };
+
 // Server Component
 export default async function ToursPage() {
   const response = await fetch(url);
   const data: Tour[] = await response.json();
+
+  // const data = await fetchTours();
 
   return (
     <section>
