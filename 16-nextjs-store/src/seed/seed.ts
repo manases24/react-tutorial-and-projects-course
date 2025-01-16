@@ -1,6 +1,9 @@
-const { PrismaClient } = require("@prisma/client");
-const products = require("./products.json");
+import { PrismaClient } from "@prisma/client";
+import { products } from "./products";
+
 const prisma = new PrismaClient();
+
+console.log("Seed init...");
 
 async function main() {
   for (const product of products) {
@@ -8,6 +11,7 @@ async function main() {
       data: product,
     });
   }
+  console.log("Seed execution...");
 }
 main()
   .then(async () => {
