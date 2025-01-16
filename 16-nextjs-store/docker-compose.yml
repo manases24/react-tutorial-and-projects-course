@@ -1,13 +1,14 @@
 version: "3.8"
 services:
-  dev-db:
+  store-db:
     image: supabase/postgres
     ports:
       - "5432:5432"
     environment:
-      POSTGRES_USER: ${DB_USER}
-      POSTGRES_PASSWORD: ${DB_PASSWORD}
-      POSTGRES_DB: ${DB_DB}
+      POSTGRES_URL=${DIRECT_URL}
+      # POSTGRES_USER: ${DB_USER}
+      # POSTGRES_PASSWORD: ${DB_PASSWORD}
+      # POSTGRES_DB: ${DB_NAME}
     volumes:
       - ./postgres:/var/lib/postgresql/data
     # networks:
