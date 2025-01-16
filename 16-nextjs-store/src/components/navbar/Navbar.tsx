@@ -1,11 +1,11 @@
 import {
   CartButton,
   Container,
-  DarkMode,
   LinksDropdwon,
   Logo,
   NavSearch,
 } from "@/components";
+import DarkMode from "./DarkMode";
 
 export const Navbar = () => {
   return (
