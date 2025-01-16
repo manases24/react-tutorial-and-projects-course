@@ -6,7 +6,7 @@ export const Logo = () => {
   return (
     <Button size="icon" asChild>
       <Link href="/">
-        <DiJsBadge  className="w-6 h-6" />
+        <DiJsBadge className="w-6 h-6" />
       </Link>
     </Button>
   );
