@@ -1,10 +1,13 @@
-import { FeaturedProducts, Hero } from "@/components";
+import { Suspense } from "react";
+import { FeaturedProducts, Hero, LoadingContainer } from "@/components";
 
 export default function Home() {
   return (
     <>
       <Hero />
-      <FeaturedProducts />
+      <Suspense fallback={<LoadingContainer />}>
+        <FeaturedProducts />
+      </Suspense>
     </>
   );
 }
