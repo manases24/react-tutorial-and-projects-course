@@ -1,38 +1,32 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
-generator client {
-  provider = "prisma-client-js"
-}
-
 datasource db {
   provider  = "postgresql"
   url       = env("DATABASE_URL")
   directUrl = env("DIRECT_URL")
 }
 
+generator client {
+  provider = "prisma-client-js"
+}
+
 model Product {
-  id          String     @id @default(nanoid())
+  id          String     @id @default(uuid())
   name        String
   company     String
   description String
   featured    Boolean
   image       String
   price       Int
+  slug        String     @unique
   createdAt   DateTime   @default(now())
   updatedAt   DateTime   @updatedAt
   clerkId     String
-  slug        String     @unique
   favorites   Favorite[]
   reviews     Review[]
   cartItems   CartItem[]
 }
 
 model Favorite {
-  id        String   @id @default(nanoid())
+  id        String   @id @default(uuid())
   clerkId   String
   product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
   productId String
@@ -41,7 +35,7 @@ model Favorite {
 }
 
 model Review {
-  id             String   @id @default(nanoid())
+  id             String   @id @default(uuid())
   clerkId        String
   rating         Int
   comment        String
@@ -54,7 +48,7 @@ model Review {
 }
 
 model Cart {
-  id             String     @id @default(nanoid())
+  id             String     @id @default(uuid())
   clerkId        String
   cartItems      CartItem[]
   numItemsInCart Int        @default(0)
@@ -68,7 +62,7 @@ model Cart {
 }
 
 model CartItem {
-  id        String   @id @default(nanoid())
+  id        String   @id @default(uuid())
   product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
   productId String
   cart      Cart     @relation(fields: [cartId], references: [id], onDelete: Cascade)
@@ -79,7 +73,7 @@ model CartItem {
 }
 
 model Order {
-  id         String   @id @default(nanoid())
+  id         String   @id @default(uuid())
   clerkId    String
   products   Int      @default(0)
   orderTotal Int      @default(0)
