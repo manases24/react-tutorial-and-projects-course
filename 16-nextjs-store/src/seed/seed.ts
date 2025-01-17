@@ -94,4 +94,16 @@ export const products: Product[] = [
     clerkId: "clerkId",
     slug: "lego-speed-champions-2023-mclaren-formula-1",
   },
+  {
+    name: "Smartwatch 2 Mallas + Llamada+monitoreo De Salud",
+    company: "Lego",
+    description:
+      "Cloud bread VHS hell of banjo bicycle rights jianbing umami mumblecore etsy 8-bit pok pok +1 wolf. Vexillologist yr dreamcatcher waistcoat, authentic chillwave trust fund. Viral typewriter fingerstache pinterest pork belly narwhal. Schlitz venmo everyday carry kitsch pitchfork chillwave iPhone taiyaki trust fund hashtag kinfolk microdosing gochujang live-edge",
+    featured: true,
+    image:
+      "https://http2.mlstatic.com/D_NQ_NP_2X_873278-MLA81453730896_122024-F.webp",
+    price: 20,
+    clerkId: "clerkId",
+    slug: "smartwatch-2-mallas-llamadamonitoreo-de-salud",
+  },
 ];
