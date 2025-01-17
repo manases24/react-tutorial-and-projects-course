@@ -12,12 +12,12 @@ interface Props {
 export const ProductsGrid = ({ products }: Props) => {
   return (
     <div className="pt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-      {products.map(({ id, name, price, image }) => {
+      {products.map(({ id, name, price, image, slug }) => {
         const dollarsAmount = formatCurrency(price);
 
         return (
-          <article key={id} className="group relative">
-            <Link href={`/products/${id}`}>
+          <article key={slug} className="group relative">
+            <Link href={`/product/${slug}`}>
               <Card className="transform group-hover:shadow-xl transition-shadow duration-500">
                 <CardContent className="p-4">
                   <div className="relative h-64 md:h-48 rounded overflow-hidden ">

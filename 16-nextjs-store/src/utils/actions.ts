@@ -1,3 +1,4 @@
+import { redirect } from "next/navigation";
 import prisma from "./prisma";
 
 interface AllProductsProps {
@@ -21,4 +22,16 @@ export const fetchAllProducts = async ({ search = "" }: AllProductsProps) => {
   });
 
   return products;
+};
+
+export const fetchSingleProduct = async (slug: string) => {
+  const product = await prisma.product.findUnique({
+    where: {
+      slug: slug,
+    },
+  });
+  if (!product) {
+    redirect("/product");
+  }
+  return product;
 };
