@@ -17,10 +17,9 @@ export const ProductsGrid = ({ products }: Props) => {
 
         return (
           <article key={slug} className="group relative">
-           
-              <Card className="transform group-hover:shadow-xl transition-shadow duration-500">
-                <CardContent className="p-4">
-                  {/* <div className="relative h-64 md:h-48 rounded overflow-hidden ">
+            <Card className="transform group-hover:shadow-xl transition-shadow duration-500">
+              <CardContent className="p-4">
+                {/* <div className="relative h-64 md:h-48 rounded overflow-hidden ">
                     <Image
                       src={image}
                       alt={name}
@@ -30,30 +29,28 @@ export const ProductsGrid = ({ products }: Props) => {
                       className="rounded w-full object-cover transform group-hover:scale-110 transition-transform duration-500"
                     />
                   </div> */}
-                  <div className="relative w-full h-64 md:h-48">
-  <Image
-    src={image}
-    alt={name}
-    layout="fill" // Cambia "fill" por "layout" y asegura el tamaño
-    objectFit="contain" // Esto reemplaza "object-cover" para mantener proporciones originales
-    priority
-    className="rounded transform group-hover:scale-110 transition-transform duration-500"
-  />
-</div>
+                <div className="relative w-full h-64 md:h-48">
+                  <Image
+                    src={image}
+                    alt={name}
+                    layout="fill" // Cambia "fill" por "layout" y asegura el tamaño
+                    objectFit="contain" // Esto reemplaza "object-cover" para mantener proporciones originales
+                    priority
+                    className="rounded transform group-hover:scale-110 transition-transform duration-500"
+                  />
+                </div>
 
-                  <div className="mt-4 text-center">
+                <div className="mt-4 text-center">
                   <Link href={`/product/${slug}`}>
                     <h2 className="text-lg capitalize hover:text-blue-600">
                       {name}
                     </h2>
-                    </Link>
-                    <p className="text-muted-foreground mt-2">
-                      {dollarsAmount}
-                    </p>
-                  </div>
-                </CardContent>
-              </Card>
-          
+                  </Link>
+                  <p className="text-muted-foreground mt-2">{dollarsAmount}</p>
+                </div>
+              </CardContent>
+            </Card>
+
             <div className="absolute top-7 right-7 z-5">
               <FavoriteToggleButton productId={id} />
             </div>
