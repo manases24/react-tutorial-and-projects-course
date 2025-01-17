@@ -106,4 +106,16 @@ export const products: Product[] = [
     clerkId: "clerkId",
     slug: "smartwatch-2-mallas-llamadamonitoreo-de-salud",
   },
+  {
+    name: "Bicicleta Mtb Overtech R29 Acero 21v Freno A Disco Pp Color Negro/Rosa/Blanco Tamaño del cuadro S",
+    company: "Lego",
+    description:
+      "Cloud bread VHS hell of banjo bicycle rights jianbing umami mumblecore etsy 8-bit pok pok +1 wolf. Vexillologist yr dreamcatcher waistcoat, authentic chillwave trust fund. Viral typewriter fingerstache pinterest pork belly narwhal. Schlitz venmo everyday carry kitsch pitchfork chillwave iPhone taiyaki trust fund hashtag kinfolk microdosing gochujang live-edge",
+    featured: false,
+    image:
+      "https://http2.mlstatic.com/D_NQ_NP_2X_773827-MLA79854511120_102024-F.webp",
+    price: 20,
+    clerkId: "clerkId",
+    slug: "bicicleta-mtb-overtech-r29-acero-21v-freno-a-disco-pp-color-negrorosablanco-tamano-del-cuadro-s",
+  },
 ];

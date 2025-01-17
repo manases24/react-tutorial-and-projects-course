@@ -16,7 +16,7 @@ export const ProductsGrid = ({ products }: Props) => {
         const dollarsAmount = formatCurrency(price);
 
         return (
-          <article key={slug} className="group relative">
+          <article key={id} className="group relative">
             <Card className="transform group-hover:shadow-xl transition-shadow duration-500">
               <CardContent className="p-4">
                 {/* <div className="relative h-64 md:h-48 rounded overflow-hidden ">

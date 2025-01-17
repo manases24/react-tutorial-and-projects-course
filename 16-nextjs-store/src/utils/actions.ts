@@ -35,3 +35,17 @@ export const fetchSingleSlugProduct = async (slug: string) => {
   }
   return product;
 };
+
+// export const fetchFavoriteId = async ({ productId }: { productId: string }) => {
+//   const user = await getAuthUser();
+//   const favorite = await prisma.favorite.findFirst({
+//     where: {
+//       productId,
+//       clerkId: user.id,
+//     },
+//     select: {
+//       id: true,
+//     },
+//   });
+//   return favorite?.id || null;
+// };
