@@ -24,7 +24,7 @@ export const fetchAllProducts = async ({ search = "" }: AllProductsProps) => {
   return products;
 };
 
-export const fetchSingleProduct = async (slug: string) => {
+export const fetchSingleSlugProduct = async (slug: string) => {
   const product = await prisma.product.findUnique({
     where: {
       slug: slug,

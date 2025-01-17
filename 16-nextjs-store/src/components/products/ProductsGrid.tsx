@@ -17,10 +17,10 @@ export const ProductsGrid = ({ products }: Props) => {
 
         return (
           <article key={slug} className="group relative">
-            <Link href={`/product/${slug}`}>
+           
               <Card className="transform group-hover:shadow-xl transition-shadow duration-500">
                 <CardContent className="p-4">
-                  <div className="relative h-64 md:h-48 rounded overflow-hidden ">
+                  {/* <div className="relative h-64 md:h-48 rounded overflow-hidden ">
                     <Image
                       src={image}
                       alt={name}
@@ -29,19 +29,35 @@ export const ProductsGrid = ({ products }: Props) => {
                       priority
                       className="rounded w-full object-cover transform group-hover:scale-110 transition-transform duration-500"
                     />
-                  </div>
+                  </div> */}
+                  <div className="relative w-full h-64 md:h-48">
+  <Image
+    src={image}
+    alt={name}
+    layout="fill" // Cambia "fill" por "layout" y asegura el tamaño
+    objectFit="contain" // Esto reemplaza "object-cover" para mantener proporciones originales
+    priority
+    className="rounded transform group-hover:scale-110 transition-transform duration-500"
+  />
+</div>
+
                   <div className="mt-4 text-center">
-                    <h2 className="text-lg capitalize">{name}</h2>
+                  <Link href={`/product/${slug}`}>
+                    <h2 className="text-lg capitalize hover:text-blue-600">
+                      {name}
+                    </h2>
+                    </Link>
                     <p className="text-muted-foreground mt-2">
                       {dollarsAmount}
                     </p>
                   </div>
                 </CardContent>
               </Card>
-            </Link>
+          
             <div className="absolute top-7 right-7 z-5">
               <FavoriteToggleButton productId={id} />
             </div>
+            <div className="p-4 flex flex-col"></div>
           </article>
         );
       })}
