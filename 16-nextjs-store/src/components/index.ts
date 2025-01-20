@@ -6,6 +6,7 @@ export * from "./navbar/NavSearch";
 export * from "./navbar/Navbar";
 export * from "./navbar/SignOutLink";
 export * from "./navbar/UserIcon";
+export * from "./navbar/UserIconClient";
 
 export * from "./global/Container";
 

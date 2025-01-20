@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { SignInButton, SignedIn, SignedOut, SignUpButton } from "@clerk/nextjs";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -8,10 +9,9 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Button } from "../ui/button";
 import { LuAlignLeft } from "react-icons/lu";
-import { UserIcon } from "lucide-react";
-// import { SignInButton, SignedIn, SignedOut, SignUpButton } from "@clerk/nextjs";
 import { links } from "@/utils/links";
 import { SignOutLink } from "./SignOutLink";
+import { UserIcon } from "./UserIcon";
 
 export const LinksDropdwon = () => {
   const isAdmin = false;
@@ -25,14 +25,7 @@ export const LinksDropdwon = () => {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-48" align="start" sideOffset={10}>
-        {links.map((link, index) => (
-          <DropdownMenuItem>
-            <Link className="capitalize w-full" key={index} href={link.href}>
-              {link.label}
-            </Link>
-          </DropdownMenuItem>
-        ))}
-        {/* <SignedOut>
+        <SignedOut>
           <DropdownMenuItem>
             <SignInButton mode="modal">
               <button className="w-full text-left">Login</button>
@@ -60,7 +53,7 @@ export const LinksDropdwon = () => {
           <DropdownMenuItem>
             <SignOutLink />
           </DropdownMenuItem>
-        </SignedIn> */}
+        </SignedIn>
       </DropdownMenuContent>
     </DropdownMenu>
   );
