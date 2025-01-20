@@ -8,7 +8,7 @@ export const SignOutLink = () => {
   const { toast } = useToast();
 
   const handleLogout = () => {
-    toast({ description: "Logout Successful" });
+    toast({ description: <Message /> });
   };
 
   return (
@@ -17,5 +17,13 @@ export const SignOutLink = () => {
         Logout
       </Link>
     </SignOutButton>
+  );
+};
+
+export const Message = () => {
+  return (
+    <div className="bg-green-500 text-white p-3 rounded-lg shadow-md">
+      Logout Successful
+    </div>
   );
 };
