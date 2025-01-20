@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { auth } from "@clerk/nextjs/server";
 import { SignInButton, SignedIn, SignedOut, SignUpButton } from "@clerk/nextjs";
 import {
   DropdownMenu,
@@ -14,7 +15,9 @@ import { SignOutLink } from "./SignOutLink";
 import { UserIcon } from "./UserIcon";
 
 export const LinksDropdwon = () => {
-  const isAdmin = false;
+  // const { userId } = auth();
+  // const isAdmin = userId === process.env.ADMIN_USER_ID;
+  const isAdmin = false
 
   return (
     <DropdownMenu>

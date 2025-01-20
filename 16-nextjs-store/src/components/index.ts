@@ -19,6 +19,7 @@ export * from "./global/Container";
 export * from "./global/EmptyList";
 export * from "./global/LoadingContainer";
 export * from "./global/SectionTitle";
+export * from "./global/LoadingTable";
 
 export * from "./home/FeaturedProducts";
 export * from "./home/Hero";

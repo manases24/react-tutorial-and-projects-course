@@ -33,7 +33,7 @@ export const fetchSingleSlugProduct = async (slug: string) => {
     },
   });
   if (!product) {
-    redirect("/product");
+    redirect("/products");
   }
   return product;
 };

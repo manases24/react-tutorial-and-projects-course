@@ -1,6 +1,6 @@
 "use client";
 
-import { LoadingTable } from "@/components/global/LoadingTable";
+import { LoadingTable } from "@/components";
 
 export default function LoadingPage() {
   return <LoadingTable />;
