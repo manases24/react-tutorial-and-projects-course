@@ -15,7 +15,7 @@ export const links: NavLink[] = [
 ];
 
 export const adminLinks: NavLink[] = [
-  { href: "/admin/sales", label: "ales" },
-  { href: "/admin/products", label: "my products" },
-  { href: "/admin/products/create", label: "create product" },
+  { href: "/admin/sales", label: "Sales" },
+  { href: "/admin/products", label: "My products" },
+  { href: "/admin/products/create", label: "Create product" },
 ];
