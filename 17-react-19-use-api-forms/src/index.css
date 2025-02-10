@@ -2,3 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
+.animate-fadeIn {
+  animation: fadeIn 0.3s forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slide {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(300%); }
+}
+.animate-slide {
+  animation: slide 1.5s ease-in-out infinite;
+}
