@@ -41,7 +41,7 @@ export const ProductsGrid = ({ products }: Props) => {
                 </div>
 
                 <div className="mt-4 text-center">
-                  <Link href={`/products/${slug}`}>
+                  <Link href={`/product/${slug}`}>
                     <h2 className="text-lg capitalize hover:text-blue-600">
                       {name}
                     </h2>

@@ -4,18 +4,18 @@ interface NavLink {
 }
 
 export const links: NavLink[] = [
-  { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
-  { href: "/products", label: "Products" },
-  { href: "/favorites", label: "Favorites" },
+  { href: "/", label: "home" },
+  { href: "/about", label: "about" },
+  { href: "/products", label: "products" },
+  { href: "/favorites", label: "favorites" },
   { href: "/reviews", label: "reviews" },
-  { href: "/cart", label: "Cart" },
-  { href: "/orders", label: "Orders" },
-  { href: "/admin/sales", label: "Dashboard" },
+  { href: "/cart", label: "cart" },
+  { href: "/orders", label: "orders" },
+  { href: "/admin/sales", label: "dashboard" },
 ];
 
 export const adminLinks: NavLink[] = [
-  { href: "/admin/sales", label: "Sales" },
-  { href: "/admin/products", label: "My products" },
-  { href: "/admin/products/create", label: "Create product" },
+  { href: "/admin/sales", label: "sales" },
+  { href: "/admin/products", label: "my products" },
+  { href: "/admin/products/create", label: "create product" },
 ];
